@@ -5,25 +5,29 @@ extra_cheese = input("Do you want extra cheese? Y or N ")
 
 bill = 0
 
-if size == "S":
-    bill += 15
+def priceSize(size):
+    if size == "S":
+        return 15
+    elif size == "M":
+        return 20
+    else:
+        return 25
+    
+def pricePepperoni(size, add_pepperoni):
     if add_pepperoni == "Y":
-        bill += 2
-    if extra_cheese == "Y":
-        bill += 1
-elif size == "M":
-    bill += 20
-    if add_pepperoni == "Y":
-        bill += 3
-    if extra_cheese == "Y":
-        bill += 1    
-elif size == "L":
-    bill += 25
-    if add_pepperoni == "Y":
-        bill += 3
-    if extra_cheese == "Y":
-        bill += 1
-else:
-    print("Invalid size")
+        if size == "S":
+            return 2
+        else:
+            return 3
 
-print(f"Your final bill is: ${bill}")
+def priceCheese(extra_cheese):
+    if extra_cheese == "Y":
+        return 1
+    else:
+        return 0    
+
+bill += priceSize(size)
+bill += pricePepperoni(size, add_pepperoni)
+bill += priceCheese(extra_cheese)   
+
+print(bill)
